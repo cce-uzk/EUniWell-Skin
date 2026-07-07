@@ -1,0 +1,5 @@
+@use "../../050-layout/layout_breakpoints" as *;
+
+$il-grid-float-breakpoint-max: $screen-sm-max;
+$il-grid-float-breakpoint: $screen-sm-min;
+$il-toolbar-height: 40px;

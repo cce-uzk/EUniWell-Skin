@@ -39,7 +39,7 @@ git fetch upstream
 git switch -c release_9-euniwell --track upstream/release_9
 
 # 4) Once you have an empty private remote repository, add it as origin and push
-git remote add origin <YOUR_REMOTE_URL>
+git remote add origin https://github.com/cce-uzk/EUniWell-Skin.git
 git push -u origin release_9-euniwell
 ```
 
@@ -143,7 +143,7 @@ Once adapted, the regular update workflow (fetch → merge → recompile → pus
 cd <ILIAS_ROOT>/Customizing/global/skin/
 
 # 1) Clone into expected skin id folder name
-git clone <YOUR_REMOTE_URL> euniwell
+git clone https://github.com/cce-uzk/EUniWell-Skin.git euniwell
 cd euniwell
 
 # 2) Check out the branch matching your ILIAS version (see Branch Overview above)

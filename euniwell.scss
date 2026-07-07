@@ -1,0 +1,36 @@
+// # ITCSS structure
+// All style code MUST be split into these layers
+
+// The first two layers expose public variables with @forward so they can be overwritten in a subskin
+// includes all other specific layout files and folder with @use in component when needed
+
+// Relative paths differences:
+// SCSS paths are relativ to the SCSS file
+// CSS paths (linked fonts) are relative to the compiled template CSS
+
+// ## Settings
+@forward "./delos/010-settings/";
+
+// ## Dependencies
+@forward "./delos/020-dependencies/";
+
+// ## Tools
+@forward "./delos/030-tools"; // avoid creating new tools like these that generate CSS utility classes
+
+// ## Normalize
+@use "./delos/040-normalize/" as *;
+
+// ## Layout
+@use "./delos/050-layout/" as *;
+
+// ## Elements
+@use "./delos/060-elements" as *;
+
+// ## Components
+@use "./delos/070-components" as *;
+
+// ## Hacks
+@use "./delos/080-hacks" as *;
+
+// ## Global Custom styles
+@use "./custom.scss" as *;

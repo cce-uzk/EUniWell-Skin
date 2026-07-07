@@ -107,7 +107,7 @@ The skin is defined in `template.xml`:
 * The **main skin** (`euniwell`) is defined in `euniwell.scss` at the repository root, based on `delos.scss`.
 * The **style** `skin_euniwell` has its own directory `skin_euniwell/` with its corresponding SCSS entry point `skin_euniwell/skin_euniwell.scss`.
 * `skin_euniwell.scss` imports its own settings (`skin_euniwell/010-settings/`) and configures `../euniwell` (the root skin) via `@use ... with (...)`.
-* Style-specific assets (`images/`, `fonts/`, login/mail templates under `Services/`) live self-contained inside `skin_euniwell/`.
+* Style-specific assets (`images/`, `fonts/`, login/mail templates under `components/ILIAS/`) live self-contained inside `skin_euniwell/`.
 
 ### Compilation
 
@@ -135,6 +135,7 @@ git push -u origin release_12-euniwell
 * Individual `$il-*` settings variables can be renamed or removed between ILIAS versions. If compilation fails with `This variable was not declared with !default in the @used module`, the variable named in the error was removed upstream — remove the corresponding line from the `with (...)` configuration block in `skin_euniwell/skin_euniwell.scss`. Conversely, check `delos/010-settings/` for newly introduced variables that may be worth wiring up for full brand consistency.
 * Upstream ships its own `Readme.md` (and, as of ILIAS 11, `Guidelines_SCSS-Coding.md`) at the repository root. On case-insensitive filesystems (default on Windows) `Readme.md` collides with our own `README.md` — remove upstream's `Readme.md` (`git rm Readme.md`) *before* restoring our `README.md` from the previous release branch.
 * `components/` (the ILIAS 10+ equivalent of the old `Modules/`/`Services/`/`UI/` folders) is untracked via `.gitignore` and relies on the ILIAS installation's own copy. After creating a new branch from upstream, run `git rm -r --cached components` again — a fresh branch checkout starts with it tracked.
+* As of ILIAS 10, skin template overrides moved from `Services/<Component>/` to `components/ILIAS/<Component>/` (e.g. `skin_euniwell/Services/Init/` → `skin_euniwell/components/ILIAS/Init/`), and the skin deployment path changed from `Customizing/global/skin/` to `public/Customizing/skin/`. Background image/logo URLs hardcoded in login/logout templates (e.g. `./Customizing/global/skin/euniwell/skin_euniwell/images/...`) must be updated to the new path (`./Customizing/skin/euniwell/skin_euniwell/images/...`).
 
 Once adapted, the regular update workflow (fetch → merge → recompile → push) applies identically to the new branch.
 
@@ -142,19 +143,21 @@ Once adapted, the regular update workflow (fetch → merge → recompile → pus
 
 # Deploying `euniwell` to ILIAS
 
+**Note:** As of ILIAS 10, skins are deployed under `public/Customizing/skin/` instead of `Customizing/global/skin/`. The paths below are for ILIAS 10/11 (`release_10-euniwell`/`release_11-euniwell`); for ILIAS 9 (`release_9-euniwell`), use `<ILIAS_ROOT>/Customizing/global/skin/` instead.
+
 ## First deployment (clone once)
 
 ```bash
 # 0) Optional: use SSH + a read-only deploy key for private repos
 
-cd <ILIAS_ROOT>/Customizing/global/skin/
+cd <ILIAS_ROOT>/public/Customizing/skin/
 
 # 1) Clone into expected skin id folder name
 git clone https://github.com/cce-uzk/EUniWell-Skin.git euniwell
 cd euniwell
 
 # 2) Check out the branch matching your ILIAS version (see Branch Overview above)
-git checkout release_9-euniwell
+git checkout release_11-euniwell
 
 # 3) (Optional) make the webserver own the files
 #    adjust user:group as needed
@@ -164,15 +167,15 @@ chown -R www-data:www-data .
 ## Maintenance (pull latest changes)
 
 ```bash
-cd <ILIAS_ROOT>/Customizing/global/skin/euniwell
+cd <ILIAS_ROOT>/public/Customizing/skin/euniwell
 git pull --ff-only
 ```
 
 ## Switching ILIAS versions later
 
 ```bash
-cd <ILIAS_ROOT>/Customizing/global/skin/euniwell
+cd <ILIAS_ROOT>/public/Customizing/skin/euniwell
 git fetch --all
-git checkout release_10-euniwell   # replace with the branch for your new ILIAS version
+git checkout release_11-euniwell   # replace with the branch for your new ILIAS version
 git pull --ff-only
 ```

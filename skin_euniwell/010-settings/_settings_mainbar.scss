@@ -1,0 +1,15 @@
+@use "./_settings_color-palette.scss" as s-color;
+
+//** mainbar
+$il-mainbar-btn-color: s-color.$il-main-bg;
+$il-mainbar-btn-bg-color: s-color.$il-neutral-color;
+
+$il-mainbar-btn-color-hover: s-color.$il-neutral-color;
+$il-mainbar-btn-bg-color-hover: s-color.$il-main-bg;
+
+$il-mainbar-btn-color-engaged: s-color.$il-neutral-color;
+$il-mainbar-btn-bg-color-engaged: s-color.$il-main-bg;
+
+$il-mainbar-btn-icon-filter: brightness(0) invert(1);
+$il-mainbar-btn-hover-icon-filter: invert(50%);
+$il-mainbar-btn-engaged-icon-filter: invert(50%);

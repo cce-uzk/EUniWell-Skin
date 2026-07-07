@@ -1,0 +1,68 @@
+@use "./_settings_color-palette.scss" as s-color;
+@use "./_settings_typography.scss" as s-typo;
+@use "./settings_borders" as s-border;
+
+//== Buttons
+//
+//##
+
+//** Size of the font displayed inside a button
+$il-button-font-size: s-typo.$il-font-size-small;
+//** Weight of the font displayed inside a button
+$il-button-font-weight: s-typo.$il-font-weight-base;
+
+//** Text color of the standard button (most button instances)
+$il-btn-standard-color: white;
+//** Background color of the standard button (most button instances)
+$il-btn-standard-bg: s-color.$il-main-color;
+//** Border color of the standard button (most button instances)
+$il-btn-standard-border: s-color.$il-main-color;
+
+//** Text color of the primary button (most important button on the screen)
+$il-btn-primary-color: white;
+//** Background color of the primary button (most important button on the screen)
+$il-btn-primary-bg: darken(s-color.$il-secondary-color, 10%);
+//** Border color of the primary button (most important button on the screen)
+$il-btn-primary-border: darken(s-color.$il-secondary-color, 10%);
+
+//** Colors of engaged buttons
+$il-engaged-btn-color: s-color.$il-text-color;
+$il-engaged-btn-bg: white;
+
+//** Text color of the primary button (most important button on the screen)
+$il-btn-ctrl-color: s-color.$il-link-color;
+//** Background color of the primary button (most important button on the screen)
+$il-btn-ctrl-bg: s-color.$il-highlight-bg;
+//** Border color of the primary button (most important button on the screen)
+$il-btn-ctrl-border: s-color.$il-highlight-bg;
+$il-btn-ctrl-engaged-border: s-color.$il-link-color;
+$il-btn-ctrl-outer-height: 2.2rem;
+$il-btn-ctrl-inner-btn-height: 1.7rem;
+
+//** Colors of inactive buttons
+$il-disabled-btn-color: darken(s-color.$il-text-color, 20%);
+$il-disabled-btn-bg: #b0b0b0;
+$il-disabled-btn-border: #b0b0b0;
+
+//** Tag Colors
+$il-btn-tag-bg: #75deea;
+$il-btn-tag-bg-highlighted: s-color.$il-warning-color;
+
+//** Bulky Buttons
+$il-bulky-text-color: s-color.$il-text-color;
+$il-bulky-bg-color: s-color.$il-main-darker-bg;
+$il-bulky-label-size: s-typo.$il-font-size-base;
+
+$il-bulky-border-color: s-color.$il-main-darker-bg;
+
+$il-bulky-bg-color-engaged: s-color.$il-highlight-bg;
+
+//** Width of the `border` for generating carets that indicate dropdowns.
+$il-caret-width-base: 4px;
+//** Carets increase slightly in size for larger components.
+$il-caret-width-large: 5px;
+
+// Allows for customizing button radius independently from global border radius
+$il-btn-border-radius-base: s-border.$il-border-radius-base;
+$il-btn-border-radius-large: s-border.$il-border-radius-large;
+$il-btn-border-radius-small: s-border.$il-border-radius-small;

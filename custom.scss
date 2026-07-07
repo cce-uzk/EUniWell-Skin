@@ -1,0 +1,21 @@
+/* Custom: mainbar icon size */
+.il-mainbar-triggers .btn-bulky .icon.small,
+.il-mainbar-triggers .il-link.link-bulky .icon.small,
+.il-mainbar-tools-button .btn-bulky .icon.small {
+	width: 35px;
+	height: 35px;
+}
+
+/* Custom: Set slate collapsed mainbar icon */
+.il-mainbar-triggers .btn-bulky.engaged .icon,
+.il-mainbar-triggers .il-link.link-bulky.engaged .icon {
+  filter: opacity(50%);
+}
+
+/* Custom: Set hovered or focus-visible mainbar elements icon color to initial value */
+.il-mainbar-triggers .btn-bulky:hover .icon,
+.il-mainbar-triggers .btn-bulky:focus-visible .icon,
+.il-mainbar-triggers .il-link.link-bulky:hover .icon,
+.il-mainbar-triggers .il-link.link-bulky:focus-visible .icon {
+	filter: initial;
+}
